@@ -1,0 +1,76 @@
+{% extends 'layout.html' %}
+{% load static from staticfiles %}
+{% load bootstrap3 %}
+
+{% block title %}Profile | {{super}}{% endblock %}
+
+{% block body%}
+<div class="jumbotron">
+	<div class="row">
+		<div class="col-sm-6">
+			<h2>Profile Picture</h2>
+			{% if user.profile.avatar %}
+				<img src="{{ user.profile.avatar.url }}" class="img-responsive">
+			{% else %}
+				<p>Add a profile picture <a href="#edit_button">Edit</a></p>
+			{% endif %}
+		</div>
+		<div class="col-sm-6">
+			<h1>Profile</h1>
+			<h2>Name</h2>
+			<p>{{ user.first_name|title }} {{user.last_name|title }}</p>
+			<h2>Email</h2>
+			<p>{{ user.email }}</p>
+		</div>
+	</div>
+</div>
+<div class="container">
+<div class="row">
+	<div class="col-sm-6">
+		<h2>Date of Birth</h2>
+		{% if user.profile.dob %}
+			<p>{{ user.profile.dob }}</p>
+		{% else %}
+			<p>Add date of birth <a href="#edit_button">Edit</a></p>
+		{% endif %}
+		<h2>Bio</h2>
+		{% if user.profile.bio %}
+			<p>{{ user.profile.bio }}</p>
+		{% else %}
+			<p>Add bio <a href="#edit_button">Edit</a></p>
+		{% endif %}
+		<h2>Location</h2>
+		{% if user.profile.location %}
+			<p>{{ user.profile.location }}</p>
+		{% else %}
+			<p>Add a location <a href="#edit_button">Edit</a></p>
+		{% endif %}
+	</div>
+	<div class="col-sm-6">
+		<h2>Favorite Animal</h2>
+		{% if user.profile.fav_animal %}
+			<p>{{ user.profile.fav_animal }}</p>
+		{% else %}
+			<p>Add a favorite animal <a href="#edit_button">Edit</a></p>
+		{% endif %}
+		<h2>Hobbies</h2>
+		{% if user.profile.hobbies %}
+			<p>{{ user.profile.hobbies }}</p>
+		{% else %}
+			<p>Add hobbies <a href="#edit_button">Edit</a></p>
+		{% endif %}
+		<h2>Country</h2>
+		{% if user.profile.country %}
+			<p>{{ user.profile.country }}</p>
+		{% else %}
+			<p>Add country <a href="#edit_button">Edit</a></p>
+		{% endif %}
+
+	</div>
+</div>
+<div class="callout" id="edit_button">
+			<a href="{% url 'accounts:edit_profile' %}" class="button">Edit Profile</a>
+			<a href="{% url 'accounts:change_password' %}" class="button">Change Passsword</a>
+</div>
+
+{% endblock %}

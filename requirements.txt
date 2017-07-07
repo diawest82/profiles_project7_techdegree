@@ -1,0 +1,9 @@
+django-countries==4.6.1
+django-smartfields==1.0.9
+djano==1.9.4
+Pillow==4.2
+django-bootstrap3==8.2.3
+olefile==0.44
+pip==9.0.1
+pytz==2017.2
+setuptools==28.8.0

@@ -22,6 +22,10 @@
     <!-- CSS
     –––––––––––––––––––––––––––––––––––––––––––––––––– -->
     <link rel="stylesheet" href="{% static "css/global.css" %}">
+	<link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}" media="screen">
+	<link rel="stylesheet" href="{% static 'css/bootstrap-theme.css' %}">
+	<link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
+	<link rel="stylesheet" href="{% static 'css/variable.css' %}">
 
     <!-- JS
     –––––––––––––––––––––––––––––––––––––––––––––––––– -->
@@ -30,6 +34,8 @@
     <script type="text/javascript"
             src="{% static "js/autogrow.js" %}"></script>
     <script type="text/javascript" src="{% static "js/global.js" %}"></script>
+	<script type="text/javascript" src="{% static "js/bootstrap.js" %}"></script>
+	<script type="text/javascript" src="{% static "js/bootstrap.min.js" %}"></script>
 
 
 </head>
@@ -45,8 +51,7 @@
             <div class="circle--fluid--cell circle--fluid--primary">
                 <nav>
                     <ul class="circle--inline">
-                        <li><a href="#">nav</a></li>
-                        <li><a href="#">here?</a></li>
+
                     </ul>
                 </nav>
             </div>
@@ -55,11 +60,13 @@
                     <ul class="circle--inline">
                         {% if not user.is_authenticated %}
                             <li><a href="{% url 'accounts:sign_up' %}">Sign Up</a></li>
-                            <li><a href="{% url 'accounts:sign_in' %}">Sign
-                                In</a></li>
+                        <li><a class="active" href="{% url 'accounts:sign_in' %}">Sign In</a></li>
+
                         {% else %}
                             <!-- view profile link here? -->
+                            <li><a class="active" href="{% url 'accounts:profile' %}">Profile</a> </li>
                             <!-- edit profile link here? -->
+                            <li><a href="{% url 'accounts:edit_profile' %}">Edit Profile</a> </li>
                             <li><a href="{% url 'accounts:sign_out' %}">Sign Out</a></li>
                         {% endif %}
                     </ul>
@@ -78,7 +85,10 @@
             {% endfor %}
         </ul>
     {% endif %}
-    {% block body %}{% endblock %}
+	<div class="container">
+		{% block body %}
+		{% endblock %}
+	</div>
 </div>
 </body>
 </html>
